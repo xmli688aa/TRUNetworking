@@ -7,6 +7,7 @@
 //
 
 #import "ETViewController.h"
+#import "ETNetworking.h"
 
 @interface ETViewController ()
 
@@ -17,13 +18,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    NSInteger result = [ETNetworking caculateNumWithA:1 andB:2];
+    NSLog(@"计算结果：%ld",result);
+  
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)gotoCarVC:(id)sender {
+    UIViewController *vc = [ETNetworking CarVCWithUserInfo:@{@"name":@"ethon"}];
+    [self.navigationController pushViewController:vc animated:YES];
+//    [self presentViewController:vc animated:YES completion:nil];
 }
 
 @end
